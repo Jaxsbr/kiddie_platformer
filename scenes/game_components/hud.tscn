@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://y6l7uw4oh4v1"]
+
+[ext_resource type="Script" uid="uid://bb6haj24qhkt" path="res://scenes/game_components/hud.gd" id="1_3d1nu"]
+[ext_resource type="Texture2D" uid="uid://bfnoq5e0s0cbh" path="res://assets/sprites/coin.png" id="2_88kxi"]
+[ext_resource type="Texture2D" uid="uid://bsu8t3a48w8gd" path="res://assets/sprites/hearts.png" id="2_gmwos"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnsry"]
+atlas = ExtResource("2_gmwos")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxark"]
+atlas = ExtResource("2_gmwos")
+region = Rect2(0, 32, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6xob"]
+atlas = ExtResource("2_gmwos")
+region = Rect2(0, 64, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmwos"]
+atlas = ExtResource("2_88kxi")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3d1nu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxHearts" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Heart1" type="TextureRect" parent="VBoxContainer/HBoxHearts"]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_bnsry")
+
+[node name="Heart2" type="TextureRect" parent="VBoxContainer/HBoxHearts"]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_uxark")
+
+[node name="Heart3" type="TextureRect" parent="VBoxContainer/HBoxHearts"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_b6xob")
+
+[node name="HBoxCoins" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxCoins"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gmwos")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxCoins"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "X 10"

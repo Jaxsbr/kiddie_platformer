@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://jlepnk2x0vjg"]
+
+[ext_resource type="Script" uid="uid://2ux1lx68ng43" path="res://scenes/pause/pause.gd" id="1_2vals"]
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_2vals")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.184314, 0.309804, 0.784314)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -42.5
+offset_right = 85.5
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Pause"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Exit
+"
+
+[node name="Shop" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Shop
+"
+
+[node name="Continue" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/Shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/Continue" to="." method="_on_continue_pressed"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://by7bmxpp32t0y"]
+
+[ext_resource type="Script" uid="uid://6l5gignbame2" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fsom3")
+
+[node name="content" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="title" type="Label" parent="content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "My Awesome Game"
+horizontal_alignment = 1
+
+[node name="play_button" type="Button" parent="content"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play"
+
+[connection signal="pressed" from="content/play_button" to="." method="_on_play_button_pressed"]

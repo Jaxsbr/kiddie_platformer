@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://63vchmg0eb14"]
+
+[ext_resource type="Script" uid="uid://bp421ex5sav6b" path="res://scenes/level_select/level_select.gd" id="1_t5gxd"]
+
+[node name="LevelSelect" type="Node2D"]
+script = ExtResource("1_t5gxd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 801.0
+offset_bottom = 485.0
+color = Color(0.0826512, 0.420918, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 62.0
+offset_bottom = 40.0
+
+[node name="Shop" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Shop
+"
+
+[node name="Level1" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Level 1"
+
+[node name="Level2" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Level 2"
+
+[node name="Level3" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Level 3"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Level3" to="." method="_on_level_3_pressed"]
