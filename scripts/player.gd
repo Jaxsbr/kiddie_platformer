@@ -67,7 +67,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_explode_zone_body_entered(body: Node2D) -> void:
-	print("collide with enemy")
+	if body != CharacterBody2D:
+		return # collide with other charcters only
+	print("explode view collides with enemy")
+
 	if explode_active:
 		print(body)
 		print(body.get_node("CollisionShape2D"))

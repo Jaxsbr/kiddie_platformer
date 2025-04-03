@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjlaob1p88tid"]
+
+[ext_resource type="Script" uid="uid://cij8hwlywtcqs" path="res://scenes/game_components/check_point.gd" id="1_rq1cm"]
+[ext_resource type="Texture2D" uid="uid://diil1n0xd4g4y" path="res://assets/sprites/world_tileset.png" id="2_g5jva"]
+[ext_resource type="AudioStream" uid="uid://di8bfqrjmwcmg" path="res://assets/sounds/power_up.wav" id="3_g5jva"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ntbb"]
+atlas = ExtResource("2_g5jva")
+region = Rect2(128, 48, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cxtv"]
+size = Vector2(14, 14)
+
+[node name="CheckPoint" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_rq1cm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_0ntbb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_1cxtv")
+
+[node name="CollectSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g5jva")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -208,6 +208,7 @@ shape = SubResource("CircleShape2D_fjrip")
 
 [node name="JumpAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_qhqgy")
+volume_db = -10.0
 
 [node name="DuckAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_dqkch")

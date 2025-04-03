@@ -21,6 +21,10 @@ layout_mode = 2
 text = "Shop
 "
 
+[node name="Level0" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Level 0"
+
 [node name="Level1" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 text = "Level 1"
@@ -34,6 +38,7 @@ layout_mode = 2
 text = "Level 3"
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Level0" to="." method="_on_level_0_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Level2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Level3" to="." method="_on_level_3_pressed"]

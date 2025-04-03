@@ -1,5 +1,9 @@
 extends Node2D
 
+func _on_level_0_pressed() -> void:
+	SceneTransition.change_scene(GlobalTypes.GameStates.LevelPlay, {"level_id": 0})
+	GameProgress.set_current_level(0)
+
 func _on_level_1_pressed() -> void:
 	SceneTransition.change_scene(GlobalTypes.GameStates.LevelPlay, {"level_id": 1})
 	GameProgress.set_current_level(1)
