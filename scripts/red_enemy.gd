@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Enemy
 
 
 const SPEED = 25.0

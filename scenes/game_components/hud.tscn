@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://y6l7uw4oh4v1"]
+[gd_scene load_steps=14 format=3 uid="uid://y6l7uw4oh4v1"]
 
 [ext_resource type="Script" uid="uid://bb6haj24qhkt" path="res://scenes/game_components/hud.gd" id="1_3d1nu"]
 [ext_resource type="Texture2D" uid="uid://bfnoq5e0s0cbh" path="res://assets/sprites/coin.png" id="2_88kxi"]
@@ -19,6 +19,27 @@ region = Rect2(0, 64, 96, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmwos"]
 atlas = ExtResource("2_88kxi")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_88kxi"]
+load_path = "res://.godot/imported/jumpboots.png-88778c0c2fd4db717190954318e3d1aa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adwlm"]
+atlas = SubResource("CompressedTexture2D_88kxi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_221k1"]
+load_path = "res://.godot/imported/jumpboots.png-88778c0c2fd4db717190954318e3d1aa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_argtx"]
+atlas = SubResource("CompressedTexture2D_221k1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4njd5"]
+load_path = "res://.godot/imported/jumpboots.png-88778c0c2fd4db717190954318e3d1aa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1htoh"]
+atlas = SubResource("CompressedTexture2D_4njd5")
+region = Rect2(64, 0, 32, 32)
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -60,3 +81,18 @@ stretch_mode = 4
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "X 10"
+
+[node name="HBoxItems" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="JumpBootsIndicator" type="TextureRect" parent="VBoxContainer/HBoxItems"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_adwlm")
+
+[node name="PickAxeIndicator" type="TextureRect" parent="VBoxContainer/HBoxItems"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_argtx")
+
+[node name="FireballsIndicator" type="TextureRect" parent="VBoxContainer/HBoxItems"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_1htoh")

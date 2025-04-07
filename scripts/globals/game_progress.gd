@@ -30,6 +30,9 @@ func add_player_item(item_type: GlobalTypes.PlayerItemTypes) -> void:
 	_player_items[item_type] = true
 	print("Item ", item_type)
 	
+func has_player_item(item_type: GlobalTypes.PlayerItemTypes) -> bool:
+	return _player_items[item_type]
+	
 var _checkpoint = { }
 func save_checkpoint(checkpoint_pos: Vector2) -> void:
 	# Overwrite previous checkpoints per level

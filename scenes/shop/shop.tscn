@@ -1,32 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpvlnlx7x4h4m"]
+[gd_scene load_steps=8 format=3 uid="uid://dpvlnlx7x4h4m"]
 
 [ext_resource type="Script" uid="uid://cim1guk33l734" path="res://scenes/shop/shop.gd" id="1_qaxay"]
 [ext_resource type="Texture2D" uid="uid://bfnoq5e0s0cbh" path="res://assets/sprites/coin.png" id="2_7lxhl"]
+[ext_resource type="Texture2D" uid="uid://cfx5ak73hv3r1" path="res://assets/sprites/jumpboots.png" id="3_7lxhl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jp048"]
 atlas = ExtResource("2_7lxhl")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qaxay"]
-load_path = "res://.godot/imported/fruit.png-3735163b668af10c2b35b52cba81b68a.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7lxhl"]
-atlas = SubResource("CompressedTexture2D_qaxay")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jp048"]
-load_path = "res://.godot/imported/fruit.png-3735163b668af10c2b35b52cba81b68a.ctex"
+atlas = ExtResource("3_7lxhl")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ctpgp"]
-atlas = SubResource("CompressedTexture2D_jp048")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ptf86"]
-load_path = "res://.godot/imported/fruit.png-3735163b668af10c2b35b52cba81b68a.ctex"
+atlas = ExtResource("3_7lxhl")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ge4d2"]
-atlas = SubResource("CompressedTexture2D_ptf86")
-region = Rect2(0, 48, 16, 16)
+atlas = ExtResource("3_7lxhl")
+region = Rect2(64, 0, 32, 32)
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -43,6 +35,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Shop"
 
+[node name="LevelSelect" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back to Levels"
+
 [node name="CoinDisplayHBox" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -57,66 +54,62 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "X 10"
 
-[node name="ItemsDisplayHBox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="PickaxeVBox" type="VBoxContainer" parent="VBoxContainer/ItemsDisplayHBox"]
+[node name="PickaxeVBox" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ItemsDisplayHBox/PickaxeVBox"]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PickaxeVBox"]
 layout_mode = 2
-text = "Item1"
+text = "Pick Axe"
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ItemsDisplayHBox/PickaxeVBox"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/PickaxeVBox"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_7lxhl")
 expand_mode = 4
 
-[node name="PickaxeButton" type="Button" parent="VBoxContainer/ItemsDisplayHBox/PickaxeVBox"]
+[node name="PickaxeButton" type="Button" parent="VBoxContainer/GridContainer/PickaxeVBox"]
 layout_mode = 2
 text = "Buy"
 
-[node name="JumpBootsVBox" type="VBoxContainer" parent="VBoxContainer/ItemsDisplayHBox"]
+[node name="JumpBootsVBox" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ItemsDisplayHBox/JumpBootsVBox"]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/JumpBootsVBox"]
 layout_mode = 2
-text = "Item2"
+text = "Jump Boots"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ItemsDisplayHBox/JumpBootsVBox"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/JumpBootsVBox"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_ctpgp")
 expand_mode = 4
 
-[node name="JumpBootsButton" type="Button" parent="VBoxContainer/ItemsDisplayHBox/JumpBootsVBox"]
+[node name="JumpBootsButton" type="Button" parent="VBoxContainer/GridContainer/JumpBootsVBox"]
 layout_mode = 2
 text = "Buy"
 
-[node name="FireballVBox" type="VBoxContainer" parent="VBoxContainer/ItemsDisplayHBox"]
+[node name="FireballVBox" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ItemsDisplayHBox/FireballVBox"]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/FireballVBox"]
 layout_mode = 2
-text = "Item3"
+text = "Fireballs"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ItemsDisplayHBox/FireballVBox"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/FireballVBox"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_ge4d2")
 expand_mode = 4
 
-[node name="FireballsButton" type="Button" parent="VBoxContainer/ItemsDisplayHBox/FireballVBox"]
+[node name="FireballsButton" type="Button" parent="VBoxContainer/GridContainer/FireballVBox"]
 layout_mode = 2
 text = "Buy"
 
-[node name="LevelSelect" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Levels"
-
-[connection signal="pressed" from="VBoxContainer/ItemsDisplayHBox/PickaxeVBox/PickaxeButton" to="." method="_on_pickaxe_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ItemsDisplayHBox/JumpBootsVBox/JumpBootsButton" to="." method="_on_jump_boots_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ItemsDisplayHBox/FireballVBox/FireballsButton" to="." method="_on_fireballs_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LevelSelect" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/PickaxeVBox/PickaxeButton" to="." method="_on_pickaxe_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/JumpBootsVBox/JumpBootsButton" to="." method="_on_jump_boots_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/FireballVBox/FireballsButton" to="." method="_on_fireballs_button_pressed"]

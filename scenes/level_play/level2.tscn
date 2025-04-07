@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dwcfbahqbgqjd"]
+[gd_scene load_steps=21 format=4 uid="uid://dwcfbahqbgqjd"]
 
 [ext_resource type="Script" uid="uid://c8x5dkj7arsg5" path="res://scenes/level_play/level_load.gd" id="1_odmou"]
 [ext_resource type="Texture2D" uid="uid://diil1n0xd4g4y" path="res://assets/sprites/world_tileset.png" id="2_cta4c"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ci83k8pxnlkmm" path="res://scenes/game_components/slime.tscn" id="8_pq54b"]
 [ext_resource type="PackedScene" uid="uid://d1jpddbr4x4l4" path="res://scenes/game_components/platforms/platform_dirt.tscn" id="9_odmou"]
 [ext_resource type="PackedScene" uid="uid://cjlaob1p88tid" path="res://scenes/game_components/check_point.tscn" id="10_dxt8q"]
+[ext_resource type="PackedScene" uid="uid://c45xw4ilnlomx" path="res://scenes/game_components/mine_manager.tscn" id="11_yyg1c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
 texture = ExtResource("2_cta4c")
@@ -299,3 +300,7 @@ autoplay = "move"
 
 [node name="CheckPoint" parent="." instance=ExtResource("10_dxt8q")]
 position = Vector2(-485, 33)
+
+[node name="MineManager" parent="." node_paths=PackedStringArray("player", "map") instance=ExtResource("11_yyg1c")]
+player = NodePath("../Player")
+map = NodePath("../Map")

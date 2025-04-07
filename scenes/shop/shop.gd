@@ -1,18 +1,24 @@
 extends Control
 
 @onready var total_coins: Label = $VBoxContainer/CoinDisplayHBox/TotalCoins
-@onready var pickaxe_button: Button = $VBoxContainer/ItemsDisplayHBox/PickaxeVBox/PickaxeButton
-@onready var jump_boots_button: Button = $VBoxContainer/ItemsDisplayHBox/JumpBootsVBox/JumpBootsButton
-@onready var fireballs_button: Button = $VBoxContainer/ItemsDisplayHBox/FireballVBox/FireballsButton
+@onready var pickaxe_button: Button = $VBoxContainer/GridContainer/PickaxeVBox/PickaxeButton
+@onready var jump_boots_button: Button = $VBoxContainer/GridContainer/JumpBootsVBox/JumpBootsButton
+@onready var fireballs_button: Button = $VBoxContainer/GridContainer/FireballVBox/FireballsButton
+
+@onready var jump_boots_v_box: VBoxContainer = $VBoxContainer/GridContainer/JumpBootsVBox
+@onready var pickaxe_v_box: VBoxContainer = $VBoxContainer/GridContainer/PickaxeVBox
+@onready var fireball_v_box: VBoxContainer = $VBoxContainer/GridContainer/FireballVBox
+
 
 var costs
 
 func _ready() -> void:	
 	costs = {
-		pickaxe_button.name: 10,
+		pickaxe_button.name: 5,
 		jump_boots_button.name: 5,
-		fireballs_button.name: 1
+		fireballs_button.name: 5
 	}
+	
 	_update_total_coins_text()
 	_update_button_states()
 
@@ -38,13 +44,22 @@ func _purchase(cost: int, item_type: GlobalTypes.PlayerItemTypes) -> void:
 
 	if success:	
 		# TODO: Add item received effect/sound/animation
-		GameProgress.add_player_item(item_type)
+		GameProgress.add_player_item(item_type)		
+		print("Purchase Success: ", success)
+	
 		_update_total_coins_text()
 		_update_button_states()
-		print("Purchase Success: ", success)
-
+		
 
 func _update_button_states() -> void:
+	if GameProgress.has_player_item(GlobalTypes.PlayerItemTypes.JumpBoots):
+		jump_boots_v_box.visible = false
+	if GameProgress.has_player_item(GlobalTypes.PlayerItemTypes.Pickaxe):
+		pickaxe_v_box.visible = false
+	if GameProgress.has_player_item(GlobalTypes.PlayerItemTypes.Fireballs):
+		fireball_v_box.visible = false
+	
+	# Determine button buy state based on cost
 	for button in [pickaxe_button, jump_boots_button, fireballs_button]:
 		var cost = costs.get(button.name, 0)
 		if GameProgress.can_deduct_total_coins(cost):

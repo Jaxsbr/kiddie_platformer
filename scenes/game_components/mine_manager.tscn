@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c45xw4ilnlomx"]
+
+[ext_resource type="Script" uid="uid://ccy1lieucvhfi" path="res://scenes/game_components/mine_manager.gd" id="1_t3xip"]
+[ext_resource type="AudioStream" uid="uid://xkedy27cdyhp" path="res://assets/sounds/explosion.wav" id="2_n6srt"]
+
+[node name="MineManager" type="Node2D"]
+script = ExtResource("1_t3xip")
+
+[node name="TileBreakSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_n6srt")
