@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bniplywdisker"]
+
+[ext_resource type="Script" uid="uid://cimwwj8tkorbf" path="res://scenes/game_components/pass_ledge_manager.gd" id="1_vaetp"]
+
+[node name="PassLedgeManager" type="Node2D"]
+script = ExtResource("1_vaetp")

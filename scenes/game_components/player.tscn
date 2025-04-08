@@ -244,6 +244,9 @@ stream = ExtResource("7_vjdm5")
 [node name="Origin" type="Marker2D" parent="."]
 position = Vector2(13, -7)
 
+[node name="Foot" type="Marker2D" parent="."]
+position = Vector2(13, 0)
+
 [node name="Pickaxe" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(19, -7)
