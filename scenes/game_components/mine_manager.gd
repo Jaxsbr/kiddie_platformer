@@ -29,6 +29,8 @@ func _physics_process(delta: float) -> void:
 		if tile_data and tile_data.has_custom_data("breakable") and tile_data.get_custom_data("breakable"):
 			map.set_cell(tile_pos, -1)
 			broken_a_tile = true
+			var tilemap_pos = map.local_to_map(tile_pos)
+			GameProgress.mine_level_block(tile_pos)
 			
 	if broken_a_tile:
 		tile_break_sound.play()

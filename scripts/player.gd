@@ -16,6 +16,7 @@ const JUMP_VELOCITY = -300.0
 @onready var shoot_point_left: Marker2D = $ShootPointLeft
 @onready var fireball_cooldown_timer: Timer = $FireballCooldownTimer
 @onready var pickaxe: Sprite2D = $Pickaxe
+@onready var origin: Marker2D = $Origin
 
 
 var is_ducking = false
@@ -23,6 +24,11 @@ var mine_active = false
 var is_invulnerable = false
 var can_double_jump: bool = false 
 var fireballs_cooling_down: bool = false
+var hit_velocity: Vector2 = Vector2.ZERO
+var hit_force = 150.0  # Adjust based on how far you want knockback to push
+var hit_friction_x = 190.0  # How quickly the hit velocity decreases
+var hit_friction_y = 1500.0  # How quickly the hit velocity decreases
+var hit_force_y_mulitiplier = 0.48
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -86,6 +92,18 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	# Apply hit velocity if it exists
+	if hit_velocity.length() > 0:
+		velocity += hit_velocity
+		
+	# Reduce hit velocity over time
+	hit_velocity.x = move_toward(hit_velocity.x, 0, hit_friction_x * delta)
+	hit_velocity.y = move_toward(hit_velocity.y, 0, hit_friction_y * delta)
+	
+	# Optionally, if the hit velocity is very small, just set it to zero
+	if hit_velocity.length() < 1.0:
+		hit_velocity = Vector2.ZERO
 
 	move_and_slide()
 	
@@ -134,9 +152,17 @@ func _on_explode_timer_timeout() -> void:
 	print("explode over")
 
 
-func take_hit() -> void:
+func take_hit(enemy_pos: Vector2) -> void:
 	if is_invulnerable:
 		return
+
+	# Calculate horizontal direction only (away from enemy)
+	# NOTE: using player origin, as global pos always seem to less
+	# than enemy x resulting in incorrect dir_x calculation
+	var dir_x = sign(origin.global_position.x - enemy_pos.x)
+	
+	# Create hit velocity with horizontal direction and fixed upward movement
+	hit_velocity = Vector2(dir_x * hit_force, -hit_force * hit_force_y_mulitiplier)  # Negative Y for upward
 		
 	GameProgress.decrement_player_heart()
 	print("Take hit")
@@ -151,10 +177,10 @@ func _on_invulnerable_timer_timeout() -> void:
 	invulnerable_timer.stop()
 
 
-func _on_timer_timeout() -> void:	
-	Engine.time_scale = 1.0
-	get_tree().reload_current_scene()
-	GameProgress.reset_level_coins()
+#func _on_timer_timeout() -> void:	
+	#Engine.time_scale = 1.0
+	#get_tree().reload_current_scene()
+	#GameProgress.reset_level_coins()
 
 
 func _on_fireball_cooldown_timer_timeout() -> void:

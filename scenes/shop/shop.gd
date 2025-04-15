@@ -14,9 +14,9 @@ var costs
 
 func _ready() -> void:	
 	costs = {
-		pickaxe_button.name: 5,
-		jump_boots_button.name: 5,
-		fireballs_button.name: 5
+		pickaxe_button.name: 100,
+		jump_boots_button.name: 260,
+		fireballs_button.name: 50
 	}
 	
 	_update_total_coins_text()

@@ -41,10 +41,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n6pvg"]
-radius = 6.0208
+radius = 4.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pjw23"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3j10"]
+size = Vector2(12, 16)
 
 [node name="Slime" type="CharacterBody2D"]
 position = Vector2(0, -12)
@@ -57,9 +57,10 @@ sprite_frames = SubResource("SpriteFrames_v5wyi")
 autoplay = "default"
 frame = 2
 frame_progress = 0.221239
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.5)
+position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_n6pvg")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
@@ -71,10 +72,10 @@ position = Vector2(0, 5)
 target_position = Vector2(-9, 0)
 
 [node name="Killzone" parent="." node_paths=PackedStringArray("my_body") instance=ExtResource("2_n6pvg")]
+collision_layer = 4
 my_body = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-visible = false
-position = Vector2(0, 5)
-shape = SubResource("CircleShape2D_pjw23")
-debug_color = Color(0.967628, 2.31028e-06, 0.47305, 0.42)
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_k3j10")
+debug_color = Color(0.275012, 0.632084, 1.92523e-07, 0.42)
