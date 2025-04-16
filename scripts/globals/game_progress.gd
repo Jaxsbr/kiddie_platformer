@@ -2,9 +2,9 @@ extends Node
 
 const starting_player_hearts = 3
 var _player_items = {
-	GlobalTypes.PlayerItemTypes.Pickaxe: true,
-	GlobalTypes.PlayerItemTypes.JumpBoots: true,
-	GlobalTypes.PlayerItemTypes.Fireballs: true
+	GlobalTypes.PlayerItemTypes.Pickaxe: false,
+	GlobalTypes.PlayerItemTypes.JumpBoots: false,
+	GlobalTypes.PlayerItemTypes.Fireballs: false
 }
 var _player_hearts = starting_player_hearts
 var _checkpoint = { }
