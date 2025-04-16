@@ -278,4 +278,3 @@ map = NodePath("../Map")
 
 [node name="KeyBlue" parent="." instance=ExtResource("12_0qiid")]
 position = Vector2(-360, 117)
-key_type = 4
