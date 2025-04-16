@@ -10,6 +10,7 @@ func _ready() -> void:
 	var tile_map = get_node("Map") as TileMapLayer
 	unload_collected_coins(tile_map)
 	unload_mined_blocks(tile_map)
+	unload_collected_level_keys()
 
 	var check_point = get_node("CheckPoint") as Node2D	
 	if GameProgress.has_level_check_point_checked() and check_point and check_point.has_method("set_checked"):
@@ -35,3 +36,13 @@ func unload_mined_blocks(tile_map: TileMapLayer) -> void:
 			tile_map.set_cell(mined_block, -1)
 		else:
 			print("⚠️ No mined block found at", mined_block, " - Skipping removal")
+
+func unload_collected_level_keys() -> void:
+	var level_keys = GameProgress.get_already_collected_level_keys()
+	var not_checked_level_key = GameProgress.get_current_level_key()
+	
+	for child in get_children():
+		if child is LevelKey:
+			if (child as LevelKey).key_type in level_keys:
+				child.queue_free()
+				break

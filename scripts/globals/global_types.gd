@@ -12,3 +12,11 @@ enum PlayerItemTypes {
 	JumpBoots,
 	Fireballs,
 }
+
+enum LevelKeyTypes {
+	None,
+	Green,
+	Pink,
+	Orange,
+	Blue,
+}

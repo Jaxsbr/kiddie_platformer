@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://y6l7uw4oh4v1"]
+[gd_scene load_steps=22 format=3 uid="uid://y6l7uw4oh4v1"]
 
 [ext_resource type="Script" uid="uid://bb6haj24qhkt" path="res://scenes/game_components/hud.gd" id="1_3d1nu"]
 [ext_resource type="Texture2D" uid="uid://bfnoq5e0s0cbh" path="res://assets/sprites/coin.png" id="2_88kxi"]
@@ -15,6 +15,34 @@ region = Rect2(0, 32, 96, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6xob"]
 atlas = ExtResource("2_gmwos")
 region = Rect2(0, 64, 96, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gmwos"]
+load_path = "res://.godot/imported/world_tileset.png-61a32465f33c3d9d3bfecb75b6485009.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_221k1"]
+atlas = SubResource("CompressedTexture2D_gmwos")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_argtx"]
+load_path = "res://.godot/imported/world_tileset.png-61a32465f33c3d9d3bfecb75b6485009.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4njd5"]
+atlas = SubResource("CompressedTexture2D_argtx")
+region = Rect2(16, 128, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1htoh"]
+load_path = "res://.godot/imported/world_tileset.png-61a32465f33c3d9d3bfecb75b6485009.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sabmd"]
+atlas = SubResource("CompressedTexture2D_1htoh")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_co7q3"]
+load_path = "res://.godot/imported/world_tileset.png-61a32465f33c3d9d3bfecb75b6485009.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epxn3"]
+atlas = SubResource("CompressedTexture2D_co7q3")
+region = Rect2(0, 128, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmwos"]
 atlas = ExtResource("2_88kxi")
@@ -67,6 +95,26 @@ texture = SubResource("AtlasTexture_uxark")
 [node name="Heart3" type="TextureRect" parent="VBoxContainer/HBoxHearts"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_b6xob")
+
+[node name="GreenKey" type="TextureRect" parent="VBoxContainer/HBoxHearts"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_221k1")
+stretch_mode = 3
+
+[node name="PinkKey" type="TextureRect" parent="VBoxContainer/HBoxHearts"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_4njd5")
+stretch_mode = 3
+
+[node name="OrangeKey" type="TextureRect" parent="VBoxContainer/HBoxHearts"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_sabmd")
+stretch_mode = 3
+
+[node name="BlueKey" type="TextureRect" parent="VBoxContainer/HBoxHearts"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_epxn3")
+stretch_mode = 3
 
 [node name="HBoxCoins" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

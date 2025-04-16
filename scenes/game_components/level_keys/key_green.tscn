@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0knl0pkuika1"]
+
+[ext_resource type="Texture2D" uid="uid://diil1n0xd4g4y" path="res://assets/sprites/world_tileset.png" id="1_m1lsp"]
+[ext_resource type="Script" uid="uid://brmaohst47b2q" path="res://scenes/game_components/level_keys/level_key.gd" id="1_okys0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okys0"]
+atlas = ExtResource("1_m1lsp")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4rqq"]
+size = Vector2(8, 14)
+
+[node name="KeyGreen" type="Area2D"]
+collision_layer = 64
+collision_mask = 32
+script = ExtResource("1_okys0")
+key_type = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_okys0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_c4rqq")

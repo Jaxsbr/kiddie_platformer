@@ -73,7 +73,7 @@ shoot={
 2d_physics/layer_4="PlayerInvulnerable"
 2d_physics/layer_5="Checkpoint"
 2d_physics/layer_6="Fireball"
-2d_physics/layer_7="MineRay"
+2d_physics/layer_7="LevelKey"
 
 [rendering]
 

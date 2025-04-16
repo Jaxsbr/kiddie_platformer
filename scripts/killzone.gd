@@ -17,10 +17,6 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	elif body.has_method("take_hit"):
 		audio_stream_player_2d.play()	
-		print("Enemy body global: ", my_body.global_position)
-		print("Enemy body position: ", my_body.position)
-		print("Enemy killzone global: ", global_position)
-		print("Enemy killzone position: ", position)
 		body.take_hit(my_body.global_position)
 
 	var hearts = GameProgress.get_player_hearts()

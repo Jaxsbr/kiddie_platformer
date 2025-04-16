@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cw14hv2wq1t1j"]
+[gd_scene load_steps=20 format=4 uid="uid://cw14hv2wq1t1j"]
 
 [ext_resource type="Texture2D" uid="uid://diil1n0xd4g4y" path="res://assets/sprites/world_tileset.png" id="1_dl115"]
 [ext_resource type="Script" uid="uid://c8x5dkj7arsg5" path="res://scenes/level_play/level_load.gd" id="1_yiscq"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cjlaob1p88tid" path="res://scenes/game_components/check_point.tscn" id="8_dl115"]
 [ext_resource type="PackedScene" uid="uid://c45xw4ilnlomx" path="res://scenes/game_components/mine_manager.tscn" id="10_leqb5"]
 [ext_resource type="PackedScene" uid="uid://bniplywdisker" path="res://scenes/game_components/pass_ledge_manager.tscn" id="11_wg1tu"]
+[ext_resource type="PackedScene" uid="uid://1cwsu6qaghal" path="res://scenes/game_components/level_keys/key_blue.tscn" id="12_0qiid"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
 texture = ExtResource("1_dl115")
@@ -274,3 +275,7 @@ map = NodePath("../Map")
 [node name="PassLedgeManager" parent="." node_paths=PackedStringArray("player", "map") instance=ExtResource("11_wg1tu")]
 player = NodePath("../Player")
 map = NodePath("../Map")
+
+[node name="KeyBlue" parent="." instance=ExtResource("12_0qiid")]
+position = Vector2(-360, 117)
+key_type = 4

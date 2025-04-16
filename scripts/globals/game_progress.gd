@@ -3,8 +3,8 @@ extends Node
 const starting_player_hearts = 3
 var _player_items = {
 	GlobalTypes.PlayerItemTypes.Pickaxe: true,
-	GlobalTypes.PlayerItemTypes.JumpBoots: false,
-	GlobalTypes.PlayerItemTypes.Fireballs: false
+	GlobalTypes.PlayerItemTypes.JumpBoots: true,
+	GlobalTypes.PlayerItemTypes.Fireballs: true
 }
 var _player_hearts = starting_player_hearts
 var _checkpoint = { }
@@ -32,6 +32,13 @@ var level_completions = {
 		"coins": []
 	},
 }
+#var level_keys = {
+	#GlobalTypes.LevelKeyTypes.Green: false,
+	#GlobalTypes.LevelKeyTypes.Pink: false,
+	#GlobalTypes.LevelKeyTypes.Orange: false,
+	#GlobalTypes.LevelKeyTypes.Blue: false
+#}
+var level_keys = { }
 var level_coin_count = { }
 var level_coin_collected_positions = { }
 var level_mined_block_positions = { }
@@ -67,6 +74,7 @@ func save_checkpoint(checkpoint_pos: Vector2) -> void:
 		"position": checkpoint_pos, # Where we respawn
 		"coins": level_coin_collected_positions[current_level].duplicate(), # Coins already collected
 		"mined_blocks": level_mined_block_positions[current_level].duplicate(),
+		"level_key": level_keys[current_level],
 		"hearts": _player_hearts
 	}
 	print("checked")
@@ -94,6 +102,18 @@ func get_already_mined_blocks() -> Array:
 		return [] # Empty list means no mined coins have been collected yet
 	return _checkpoint[current_level].get("mined_blocks")
 
+func get_already_collected_level_keys() -> Array:
+	var keys = []
+	for checkpoint in _checkpoint.values():
+		var key = checkpoint.get("level_key")
+		if key != GlobalTypes.LevelKeyTypes.None:
+			keys.append(key)
+	return keys
+	
+func get_current_level_key() -> GlobalTypes.LevelKeyTypes:
+	_validate_level_coins() # TODO: Improve name as it's not coin specific,e.g. level_keys also
+	return level_keys[current_level]
+	
 # LEVEL
 func set_current_level(level: int) -> void:
 	current_level = level
@@ -136,6 +156,7 @@ func _validate_level_coins() -> void:
 		level_coin_count[current_level] = 0
 		level_coin_collected_positions[current_level] = []
 		level_mined_block_positions[current_level] = []
+		level_keys[current_level] = GlobalTypes.LevelKeyTypes.None
 
 func increment_level_coins(coin_pos: Vector2i) -> void:
 	_validate_level_coins()
@@ -145,6 +166,9 @@ func increment_level_coins(coin_pos: Vector2i) -> void:
 func mine_level_block(mined_block: Vector2i) -> void:
 	level_mined_block_positions[current_level].append(mined_block)
 	
+func collect_level_key(level_key_type: GlobalTypes.LevelKeyTypes) -> void:
+	level_keys[current_level] = level_key_type
+	
 func get_current_level_coins() -> int:
 	_validate_level_coins()
 	return level_coin_count[current_level]
@@ -153,4 +177,5 @@ func reset_level_coins() -> void:
 	level_coin_count[current_level] = 0
 	level_coin_collected_positions[current_level] = []
 	level_mined_block_positions[current_level] = []
+	level_keys[current_level] = GlobalTypes.LevelKeyTypes.None
 	print("Level: ", current_level, " Coins: ", level_coin_count[current_level])

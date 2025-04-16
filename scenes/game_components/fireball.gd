@@ -11,7 +11,6 @@ func init(move_direction: Vector2) -> void:
 
 func _physics_process(delta: float) -> void:
 	global_position += direction * speed * delta
-	print(direction)
 
 func _on_timer_timeout() -> void:
 	timer.stop()
@@ -19,9 +18,9 @@ func _on_timer_timeout() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Enemy:
+	if body is Enemy or body is LevelKey:
 		body.queue_free()
 		
 	explode_audio.play()
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(0.2).timeout
 	queue_free()
